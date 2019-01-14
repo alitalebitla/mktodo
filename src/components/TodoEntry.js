@@ -16,6 +16,9 @@ class TodoEntry extends Component {
         if(event.keyCode !== 13) {
             return;
         }
+        if(this.state.value === '') {
+            return;
+        }
         event.preventDefault();
         todoStore.addTodo(this.state.value)
         this.setState({value: ''})

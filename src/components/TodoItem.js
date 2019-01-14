@@ -1,11 +1,16 @@
 import React, {Component} from "react";
 import { observer } from 'mobx-react'
+import todoStore from "../stores/TodoStore";
 
 @observer
 class TodoItem extends Component {
 
     onToggle= () => {
         this.props.todo.toggle()
+    }
+
+    onRemove = () => {
+        this.props.todo.removeTodo()
     }
 
     render() {
@@ -20,7 +25,7 @@ class TodoItem extends Component {
                         value={todo.completed ? "off" : "on"}
                         checked={todo.completed}/>
                     <label>{todo.title}</label>
-                    <button className="destry"/>
+                    <button className="destroy" onClick={this.onRemove}/>
                 </div>
             </li>
         )

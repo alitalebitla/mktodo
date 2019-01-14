@@ -17,4 +17,11 @@ export default class TodoModel {
     toggle() {
         this.completed = !this.completed
     }
+
+    @action
+    removeTodo() {
+        this.store.todos = this.store.todos.filter((value) => {
+            return (value !== this)
+        })
+    }
 }
